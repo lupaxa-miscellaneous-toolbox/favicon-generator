@@ -1,0 +1,31 @@
+# OS
+.DS_Store
+
+# Cursor
+.cursor/
+.worktrees/
+.superpowers/
+cursor-docs
+
+# Make
+.makefiles/
+
+# MkDocs
+site/
+
+# Output
+favicons/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
