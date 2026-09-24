@@ -4,7 +4,7 @@
     </a>
 </p>
 
-<h1 align="center">Favicon generator</h1>
+<h1 align="center">Favicon Generator</h1>
 
 Generate a modern favicon set from one source image (PNG, JPEG, WebP, or SVG):
 
@@ -18,19 +18,26 @@ Generate a modern favicon set from one source image (PNG, JPEG, WebP, or SVG):
 
 ## Install
 
+Python 3.10 or newer. The PyPI package name is `lupaxa-favicon-generator`.
+The console command is `favicon-generator`.
+
+SVG input also needs the system Cairo library (`brew install cairo` on macOS,
+or `apt install libcairo2` on Debian/Ubuntu).
+
 ```bash
 python -m pip install lupaxa-favicon-generator
-# development
-python -m pip install -e ".[dev]"
 ```
 
-The PyPI package name is `lupaxa-favicon-generator`. The console command is `favicon-generator`.
+From a clone, for development:
 
-SVG input also requires the system Cairo library (`brew install cairo` on macOS or `apt install libcairo2` on Debian/Ubuntu).
+```bash
+python -m pip install -e ".[dev]"
+```
 
 ## Use
 
 ```bash
+favicon-generator --help
 favicon-generator logo.png
 favicon-generator logo.svg \
   --output-dir site/assets/favicons \
@@ -43,12 +50,20 @@ favicon-generator logo.svg \
   --padding 0.05
 ```
 
+The same commands work as a module:
+
+```bash
+python -m lupaxa.favicon_generator --help
+python -m lupaxa.favicon_generator logo.png
+```
+
 Default output directory: `./favicons`.
 
-For Apple touch icons, prefer a non-transparent `--background` so iOS does not composite onto an unexpected fill.
-Maskable icons use an opaque white fill when `--background` is transparent.
+For Apple touch icons, prefer a non-transparent `--background` so iOS does not
+composite onto an unexpected fill. Maskable icons use an opaque white fill
+when `--background` is transparent.
 
-### Useful flags
+### Useful Flags
 
 | Flag                                       | Purpose                           |
 | :----------------------------------------- | :-------------------------------- |
@@ -56,19 +71,14 @@ Maskable icons use an opaque white fill when `--background` is transparent.
 | `--no-ico` / `--no-html` / `--no-manifest` | Skip optional outputs.            |
 | `--overwrite`                              | Replace existing files.           |
 
-### What changed from the earlier playground script
-
-- Dropped legacy multi-size Apple icons and Windows `mstile` assets
-- Replaced `--tile-colour` / `--application-name` with `--theme-colour`, `--background-colour`, `--name`, `--short-name`
-- Added SVG input (cairosvg) and PWA manifest + maskable icon
-
 Use `--help` for the full option list.
 
 ## Testing
 
 ```bash
-make install-dev
-make check
+make init
+make python-install-dev
+make python-check
 ```
 
 Or without Make:
@@ -78,8 +88,8 @@ python -m pip install -e ".[test]"
 pytest
 ```
 
-Coverage for `lupaxa.favicon_generator` is reported by default. Optional Cairo SVG integration
-tests run when marked and skip if native Cairo is unavailable:
+Coverage for `lupaxa.favicon_generator` is reported by default. Optional Cairo
+SVG integration tests run when marked and skip if native Cairo is unavailable:
 
 ```bash
 pytest -m cairo
@@ -87,12 +97,17 @@ pytest -m cairo
 
 ## Documentation
 
+The published guide is at
+<https://favicon-generator.thelupaxaproject.org/>.
+
+Site Markdown lives in `mkdocs/`.
+
 ```bash
 python -m pip install -r requirements.txt
-make docs-serve
+make mkdocs-serve
 ```
 
-Strict build: `make docs-build` (or `python -m mkdocs build --strict`).
+`make mkdocs-build` builds the site. A strict build is `python -m mkdocs build --strict`.
 
 <a href="https://github.com/the-lupaxa-project">
     <img src="https://raw.githubusercontent.com/the-lupaxa-project/brand-assets/master/logos/components/footer-for-child-orgs.svg" alt="The Lupaxa Project Footer" width="100%" />

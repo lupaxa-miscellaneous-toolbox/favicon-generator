@@ -1,6 +1,6 @@
 # Usage
 
-## Basic generation
+## Basic Generation
 
 ```bash
 favicon-generator logo.png
@@ -8,7 +8,7 @@ favicon-generator logo.png
 
 Default output directory: `./favicons`.
 
-## SVG sources
+## SVG Sources
 
 SVG input is rasterised with cairosvg and also copied to `favicon.svg` in the
 output directory.
@@ -25,7 +25,7 @@ favicon-generator logo.svg \
   --padding 0.05
 ```
 
-## Fit, background, and padding
+## Fit, Background, and Padding
 
 | Flag                            | Notes                                                 |
 | :------------------------------ | :---------------------------------------------------- |
@@ -38,7 +38,7 @@ composite onto an unexpected fill.
 
 Maskable icons use an opaque white fill when `--background` is transparent.
 
-## URL prefix and app metadata
+## URL Prefix and App Metadata
 
 Use `--prefix` so HTML and `site.webmanifest` point at the correct public path
 (for example `assets/favicons/` or `/favicons/`).
@@ -46,7 +46,7 @@ Use `--prefix` so HTML and `site.webmanifest` point at the correct public path
 `--name` / `--short-name` feed the web manifest. Theme and background colours
 default as documented in [Reference](reference.md).
 
-## Skipping optional outputs
+## Skipping Optional Outputs
 
 | Flag            | Effect                            |
 | :-------------- | :-------------------------------- |

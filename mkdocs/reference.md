@@ -3,7 +3,7 @@
 Run `favicon-generator --help` for the authoritative list from your installed
 version.
 
-## CLI options
+## CLI Options
 
 | Option                | Default                  | Description                             |
 | :-------------------- | :----------------------- | :-------------------------------------- |
@@ -23,7 +23,7 @@ version.
 | `--no-ico`            | off                      | Skip `favicon.ico`.                     |
 | `--overwrite`         | off                      | Replace existing files.                 |
 
-## Generated files
+## Generated Files
 
 | File                    | Notes                                  |
 | :---------------------- | :------------------------------------- |

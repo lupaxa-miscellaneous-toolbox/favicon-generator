@@ -1,4 +1,4 @@
-# Getting started
+# Getting Started
 
 ## Requirements
 
@@ -17,7 +17,7 @@ Editable / development install:
 python -m pip install -e ".[dev]"
 ```
 
-## First run
+## First Run
 
 ```bash
 favicon-generator --help
@@ -26,3 +26,8 @@ favicon-generator logo.png
 
 By default, files are written to `./favicons`. Use `--overwrite` if that
 directory already contains generated files you want replaced.
+
+## Documentation
+
+The published site is built from `mkdocs/` (`docs_dir: mkdocs` in `mkdocs.yml`),
+not `docs/`.

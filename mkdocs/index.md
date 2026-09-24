@@ -5,7 +5,7 @@ Generate a modern favicon set from one source image (PNG, JPEG, WebP, or SVG).
 The PyPI package is **`lupaxa-favicon-generator`**. The console command is
 **`favicon-generator`**.
 
-## What you get
+## What You Get
 
 - `favicon-16x16.png`, `favicon-32x32.png`
 - `favicon.ico` (16, 32, 48)
@@ -14,10 +14,3 @@ The PyPI package is **`lupaxa-favicon-generator`**. The console command is
 - `site.webmanifest`
 - `favicon-links.html` (optional HTML snippet)
 - `favicon.svg` when the source is SVG
-
-## Next steps
-
-- [Getting started](getting-started.md) — install and first run
-- [Usage](usage.md) — common workflows
-- [Reference](reference.md) — commands and options
-- [Examples](examples.md) — copy-paste recipes

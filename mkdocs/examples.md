@@ -6,7 +6,7 @@
 favicon-generator logo.png
 ```
 
-## SVG with site paths
+## SVG with Site Paths
 
 ```bash
 favicon-generator logo.svg \
@@ -20,7 +20,7 @@ favicon-generator logo.svg \
   --padding 0.05
 ```
 
-## Overwrite an existing output directory
+## Overwrite an Existing Output Directory
 
 ```bash
 favicon-generator logo.png --output-dir favicons --overwrite
