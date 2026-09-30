@@ -38,7 +38,6 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/lupaxa-miscellaneous-toolbox/favicon-generator"
-Documentation = "https://favicon-generator.thelupaxaproject.org/"
 Repository = "https://github.com/lupaxa-miscellaneous-toolbox/favicon-generator"
 Issues = "https://github.com/lupaxa-miscellaneous-toolbox/favicon-generator/issues"
 

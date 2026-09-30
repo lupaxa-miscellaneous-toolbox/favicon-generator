@@ -39,6 +39,26 @@ python -m pip install -e ".[dev]"
 ```bash
 favicon-generator --help
 favicon-generator logo.png
+```
+
+Default output directory: `./favicons`. Use `--overwrite` if that directory
+already contains generated files you want replaced.
+
+The same commands work as a module:
+
+```bash
+python -m lupaxa.favicon_generator --help
+python -m lupaxa.favicon_generator logo.png
+```
+
+### SVG and Site Paths
+
+SVG input is rasterised with cairosvg and also copied to `favicon.svg` in the
+output directory. Use `--prefix` so the HTML snippet and `site.webmanifest`
+point at the correct public path (for example `assets/favicons/` or
+`/favicons/`). `--name` / `--short-name` feed the web manifest.
+
+```bash
 favicon-generator logo.svg \
   --output-dir site/assets/favicons \
   --prefix /assets/favicons/ \
@@ -50,28 +70,54 @@ favicon-generator logo.svg \
   --padding 0.05
 ```
 
-The same commands work as a module:
+### Fit, Background, and Padding
 
-```bash
-python -m lupaxa.favicon_generator --help
-python -m lupaxa.favicon_generator logo.png
-```
-
-Default output directory: `./favicons`.
+| Flag                            | Notes                                                 |
+| :------------------------------ | :---------------------------------------------------- |
+| `--fit contain\|cover\|stretch` | How the source fills each canvas (`contain` default). |
+| `--background`                  | Canvas fill: `transparent`, CSS name, or hex.         |
+| `--padding`                     | Fractional padding `0.0`–`0.45`.                      |
 
 For Apple touch icons, prefer a non-transparent `--background` so iOS does not
 composite onto an unexpected fill. Maskable icons use an opaque white fill
 when `--background` is transparent.
 
-### Useful Flags
+### Skipping Optional Outputs
 
-| Flag                                       | Purpose                           |
-| :----------------------------------------- | :-------------------------------- |
-| `--fit contain\|cover\|stretch`            | How the source fills each canvas. |
-| `--no-ico` / `--no-html` / `--no-manifest` | Skip optional outputs.            |
-| `--overwrite`                              | Replace existing files.           |
+```bash
+favicon-generator logo.png --no-ico --no-html
+favicon-generator logo.png --output-dir favicons --overwrite
+```
 
-Use `--help` for the full option list.
+| Flag            | Effect                            |
+| :-------------- | :-------------------------------- |
+| `--no-ico`      | Skip `favicon.ico`.               |
+| `--no-html`     | Skip the HTML snippet.            |
+| `--no-manifest` | Skip `site.webmanifest`.          |
+| `--overwrite`   | Replace existing generated files. |
+
+## CLI Options
+
+Run `favicon-generator --help` for the authoritative list from your installed
+version.
+
+| Option                | Default                  | Description                             |
+| :-------------------- | :----------------------- | :-------------------------------------- |
+| `source`              | *(required)*             | Source image: PNG, JPEG, WebP, or SVG.  |
+| `-o` / `--output-dir` | `favicons`               | Output directory.                       |
+| `--fit`               | `contain`                | `contain`, `cover`, or `stretch`.       |
+| `--background`        | `transparent`            | Canvas background.                      |
+| `--padding`           | `0`                      | Fractional padding `0.0`–`0.45`.        |
+| `--theme-colour`      | `#FFFFFF`                | `theme-color` / manifest `theme_color`. |
+| `--background-colour` | same as `--theme-colour` | Manifest `background_color`.            |
+| `--name`              | source stem or `App`     | Manifest name.                          |
+| `--short-name`        | same as `--name`         | Manifest `short_name`.                  |
+| `--prefix`            | *(empty)*                | URL prefix for HTML and manifest.       |
+| `--html-file`         | `favicon-links.html`     | HTML snippet filename.                  |
+| `--no-manifest`       | off                      | Skip `site.webmanifest`.                |
+| `--no-html`           | off                      | Skip HTML snippet.                      |
+| `--no-ico`            | off                      | Skip `favicon.ico`.                     |
+| `--overwrite`         | off                      | Replace existing files.                 |
 
 ## Testing
 
@@ -94,20 +140,6 @@ SVG integration tests run when marked and skip if native Cairo is unavailable:
 ```bash
 pytest -m cairo
 ```
-
-## Documentation
-
-The published guide is at
-<https://favicon-generator.thelupaxaproject.org/>.
-
-Site Markdown lives in `mkdocs/`.
-
-```bash
-python -m pip install -r requirements.txt
-make mkdocs-serve
-```
-
-`make mkdocs-build` builds the site. A strict build is `python -m mkdocs build --strict`.
 
 <a href="https://github.com/the-lupaxa-project">
     <img src="https://raw.githubusercontent.com/the-lupaxa-project/brand-assets/master/logos/components/footer-for-child-orgs.svg" alt="The Lupaxa Project Footer" width="100%" />
